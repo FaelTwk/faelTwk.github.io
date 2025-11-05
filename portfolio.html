@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Ícaro Raphael</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="fade-in">
+
+    <header id="cabecalho">
+        <div class="container-geral">
+            <div class="logo">
+                PERFIL PESSOAL
+            </div>
+            <nav id="navegacao">
+                <button id="botao-fechar-menu"><i class="fa-solid fa-xmark"></i></button>
+                <a href="index.html" class="link-nav">SOBRE MIM</a>
+                <a href="portfolio.html" class="link-nav ativa">PORTFÓLIO</a>
+                <a href="habilidades.html" class="link-nav">HABILIDADES</a>
+                <a href="contato.html" class="link-nav">CONTATO</a>
+            </nav>
+            <button id="botao-abrir-menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <main class="pagina-conteudo">
+        <div class="container-carrossel">
+            
+            <h2 class="titulo-secao">MEUS PROJETOS</h2>
+
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="projeto-card">
+                            <i class="fa-solid fa-lightbulb projeto-icone"></i>
+                            <h3 class="projeto-titulo">Lâmpada Interativa</h3>
+                            <p class="projeto-descricao">Projeto focado na manipulação do DOM e eventos de clique em JavaScript para ligar e desligar uma lâmpada.</p>
+                            <button class="botao-ver-mais" 
+                                data-titulo="Lâmpada Interativa"
+                                data-imagem="img/lamp_on_off.png"
+                                data-descricao="Este foi um exercício clássico para treinar os fundamentos do JavaScript. O projeto utiliza getElementById para selecionar o elemento da lâmpada e adiciona um addEventListener para capturar o evento de clique..."
+                                data-link="#" 
+                                data-repo="https://github.com/FaelTwk">
+                                VER MAIS
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="projeto-card">
+                            <i class="fa-solid fa-car projeto-icone"></i>
+                            <h3 class="projeto-titulo">Seleção de Carros</h3>
+                            <p class="projeto-descricao">Projeto interativo de seleção e animação de carros usando JavaScript para manipular propriedades CSS (posição e escala).</p>
+                            <button class="botao-ver-mais" 
+                                data-titulo="Seleção de Carros"
+                                data-imagem="https://via.placeholder.com/600x300/CCCCCC/000000?text=Projeto+Seleção+de+Carros"
+                                data-descricao="Este projeto demonstra uma manipulação complexa do DOM. O JavaScript controla a seleção de um entre dois carros, e funções de 'acelerar' e 'desacelerar' manipulam as propriedades `top`, `left`, `right`, `width` e `height` para criar uma simulação de perspectiva e movimento na pista, com base em `window.getComputedStyle`."
+                                data-link="#" 
+                                data-repo="#">
+                                VER MAIS
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="projeto-card">
+                            <i class="fa-solid fa-calculator projeto-icone"></i>
+                            <h3 class="projeto-titulo">Calculadora</h3>
+                            <p class="projeto-descricao">Calculadora com as 4 operações básicas e interface de vidro (glassmorphism).</p>
+                            <button class="botao-ver-mais"
+                                data-titulo="Calculadora"
+                                data-imagem="https://via.placeholder.com/600x300/00FF00/FFFFFF?text=Imagem+Calculadora"
+                                data-descricao="O foco deste projeto foi treinar a manipulação de eventos do DOM em JavaScript e criar uma interface moderna com CSS."
+                                data-link="#"
+                                data-repo="#">
+                                VER MAIS
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="projeto-card">
+                            <i class="fa-solid fa-clock projeto-icone"></i>
+                            <h3 class="projeto-titulo">App de Clima</h3>
+                            <p class="projeto-descricao">Aplicativo de previsão do tempo com consumo de API (OpenWeatherMap).</p>
+                            <button class="botao-ver-mais"
+                                data-titulo="App de Clima"
+                                data-imagem="https://via.placeholder.com/600x300/0000FF/FFFFFF?text=Imagem+Clima"
+                                data-descricao="Primeiro projeto consumindo uma API real para buscar dados e exibi-los de forma dinâmica na tela, usando fetch."
+                                data-link="#"
+                                data-repo="#">
+                                VER MAIS
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="projeto-card">
+                            <i class="fa-solid fa-list-check projeto-icone"></i>
+                            <h3 class="projeto-titulo">Lista de Tarefas</h3>
+                            <p class="projeto-descricao">Um "To-Do List" simples para gerenciar tarefas, salvando dados no LocalStorage.</p>
+                            <button class="botao-ver-mais"
+                                data-titulo="Lista de Tarefas"
+                                data-imagem="https://via.placeholder.com/600x300/FFFF00/000000?text=Imagem+To-Do"
+                                data-descricao="Projeto focado em manipulação de arrays em JavaScript e persistência de dados no navegador com LocalStorage."
+                                data-link="#"
+                                data-repo="#">
+                                VER MAIS
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer id="rodape">
+        <div class="container-geral">
+            <p>ÍCARO RAPHAEL © 2025 - PROJETO DE PORTFÓLIO PESSOAL</p>
+            <p>PROGRAMAÇÃO WEB FRONTEND - UNIVERSIDADE TIRADENTES</p>
+        </div>
+    </footer>
+
+    <div id="modal-projeto">
+        <div class="modal-conteudo">
+            <span id="modal-fechar">&times;</span>
+            <div class="modal-corpo"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

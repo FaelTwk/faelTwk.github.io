@@ -1,0 +1,666 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;800&display=swap');
+
+:root {
+    --cor-fundo: #1F0318;
+    --cor-container: #1E1A1D;
+    --cor-texto: #E5F2C9;
+    --cor-barra: #8C705F;
+    --cor-borda: #7F534B;
+    --cor-ativa: #F4C2D7;
+
+    --fonte-titulo: 'JetBrains Mono', monospace;
+    --fonte-corpo: 'JetBrains Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-corpo);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--cor-texto);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container-geral {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.titulo-secao {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+}
+
+/* 2. COMPONENTES GERAIS  */
+
+/* --- Cabeçalho --- */
+#cabecalho {
+    width: 100%;
+    padding: 25px 0;
+}
+
+#cabecalho .container-geral {
+    max-width: none;
+    margin: 0;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cabecalho .logo {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* Navegação (Desktop) */
+#navegacao a {
+    font-family: var(--fonte-titulo);
+    font-size: 1.25rem;
+    margin-left: 0;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+#navegacao a:hover {
+    opacity: 1;
+}
+
+#navegacao a.ativa {
+    opacity: 1;
+    color: var(--cor-ativa);
+}
+
+/* "Mini-barra" separadora */
+#navegacao a::before {
+    content: '|';
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+    opacity: 0.3;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#navegacao a:first-child::before {
+    content: '';
+    margin: 0;
+}
+
+/* Botões do Menu Mobile (escondidos no desktop) */
+#botao-abrir-menu,
+#botao-fechar-menu {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--cor-texto);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Rodapé*/
+#rodape {
+    background-color: var(--cor-container);
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--cor-borda);
+    width: 100%;
+}
+
+#rodape p {
+    font-family: var(--fonte-titulo);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+/* Modal (Pop-up) */
+#modal-projeto {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+#modal-projeto.aberto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-conteudo {
+    background-color: #000000;
+    color: var(--cor-texto);
+    margin: auto;
+    padding: 30px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    animation: zoomIn 0.3s ease-out;
+}
+
+.modal-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--cor-texto);
+}
+.modal-imagem {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid var(--cor-borda);
+}
+.modal-descricao {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--cor-texto);
+    opacity: 0.9;
+}
+
+#modal-fechar {
+    color: var(--cor-texto);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#modal-fechar:hover {
+    opacity: 0.7;
+}
+
+/* 3. LAYOUTS GERAIS  */
+
+/* Layout principal das páginas */
+main.pagina-conteudo {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 0;
+}
+
+.layout-duas-colunas {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+.layout-coluna-foto {
+    flex: 1; 
+    padding-top: 1rem;
+}
+
+.layout-coluna-conteudo {
+    flex: 2;
+}
+
+.layout-coluna-foto img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--cor-borda);
+}
+
+/* PÁGINAS ESPECÍFICAS */
+
+/*  Página: Sobre Mim (index.html) */
+.sobre-mim-texto .titulo-principal {
+    font-family: var(--fonte-titulo);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.sobre-mim-texto p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.sobre-mim-social a {
+    font-family: var(--fonte-titulo);
+    font-size: 1.1rem;
+    margin-right: 15px;
+    border: 1px solid var(--cor-borda);
+    padding: 12px 18px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.sobre-mim-social a:hover {
+    background-color: var(--cor-container);
+}
+
+.sobre-mim-social a i {
+    margin-right: 8px;
+}
+
+/* Página: Portfólio (portfolio.html)  */
+.container-carrossel {
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.swiper {
+    width: 100%;
+    padding: 20px 0 40px 0;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--cor-texto);
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    opacity: 1;
+}
+
+.projeto-card {
+    background-color: var(--cor-container);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    min-height: 380px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projeto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.projeto-icone {
+    font-size: 4.5rem;
+    color: var(--cor-barra);
+    margin-bottom: 1.5rem;
+}
+
+.projeto-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    color: var(--cor-barra);
+    margin-bottom: 0.5rem;
+}
+
+.projeto-descricao {
+    font-size: 0.9rem;
+    color: var(--cor-barra);
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.botao-ver-mais {
+    font-family: var(--fonte-titulo);
+    font-size: 1rem;
+    color: #FFFFFF;
+    background-color: #000000;
+    border: 1px solid var(--cor-borda);
+    padding: 12px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.botao-ver-mais:hover {
+    background-color: #222;
+}
+
+/* Estilo dos Botões dentro do Modal  */
+
+.modal-links {
+    display: flex;
+    gap: 1rem; 
+    margin-top: 1.5rem;
+}
+
+.botao-modal {
+    font-family: var(--fonte-titulo);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--cor-container); 
+    background-color: var(--cor-texto); 
+    padding: 10px 15px;
+    border-radius: 4px;
+    flex-grow: 1; 
+    transition: opacity 0.3s ease;
+}
+
+.botao-modal:hover {
+    opacity: 0.8;
+}
+
+/* Página: Habilidades (habilidades.html)  */
+.habilidades-container {
+    margin: 0 auto;
+    background-color: var(--cor-container);
+    border-radius: 8px;
+    padding: 3rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.lista-habilidades {
+    margin-top: 1rem;
+}
+
+.item-habilidade {
+    margin-bottom: 2.5rem;
+}
+
+.habilidade-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.habilidade-nome {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--cor-texto);
+}
+
+.habilidade-porcentagem {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #FFFFFF;
+}
+
+.barra-progresso {
+    width: 100%;
+    height: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.barra-preenchimento {
+    height: 100%;
+    width: 0%;
+    background-color: #000000;
+    border-radius: 10px;
+    transition: width 0.8s ease-out;
+}
+
+/* Página: Contato (contato.html)  */
+.contato-subtitulo {
+    font-family: var(--fonte-titulo);
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-align: left;
+    color: var(--cor-texto);
+    opacity: 0.8;
+    margin-bottom: 2.5rem; 
+}
+
+.grupo-formulario {
+    margin-bottom: 1.5rem;
+}
+
+.grupo-formulario label {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--cor-texto);
+    margin-bottom: 0.5rem;
+}
+
+#formulario-contato input[type="text"],
+#formulario-contato input[type="email"],
+#formulario-contato textarea {
+    width: 100%;
+    padding: 12px;
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    background-color: var(--cor-texto);
+    color: var(--cor-container);
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+}
+
+.grupo-formulario-botao {
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+.botao-enviar {
+    font-family: var(--fonte-titulo);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #FFFFFF; 
+    background-color: #000000; 
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botao-enviar:hover {
+    background-color: #222;
+}
+
+#formulario-contato input.erro,
+#formulario-contato textarea.erro {
+    border-color: #FF5555;
+    border-width: 2px;
+}
+
+
+
+/* 5. ANIMAÇÕES (Keyframes) */
+
+/* Animação do Modal */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animação de transição de página */
+body.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 6. RESPONSIVIDADE */
+
+/* --- Tablets --- */
+@media (max-width: 900px) {
+    .layout-duas-colunas {
+        flex-direction: column; 
+        gap: 2rem;
+        align-items: center; 
+    }
+    
+    .layout-coluna-foto {
+        flex: none;
+        padding-top: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .layout-coluna-conteudo {
+        flex: none;
+        width: 100%;
+    }
+    
+    .sobre-mim-texto,
+    .contato-subtitulo {
+        text-align: center;
+    }
+}
+
+/*  Celulares  */
+@media (max-width: 768px) {
+    #cabecalho .container-geral {
+        padding: 0 20px;
+    }
+
+    /* Mostra o botão Hamburger */
+    #botao-abrir-menu {
+        display: block;
+    }
+    
+    /* Mostra o botão 'X' */
+    #botao-fechar-menu {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+    }
+
+    /* Configura o menu slide-in */
+    #navegacao {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--cor-container);
+        border-left: 1px solid var(--cor-borda);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; 
+        padding-top: 8rem;
+        align-items: center;
+        gap: 2rem;
+        
+        transition: right 0.4s ease-out;
+        z-index: 1001;
+    }
+    
+    #navegacao.menu-ativo {
+        right: 0;
+    }
+
+    /* Links dentro do menu mobile */
+    #navegacao a {
+        margin-left: 0;
+        font-size: 1.5rem;
+        opacity: 0.7;
+    }
+    
+    #navegacao a.ativa {
+        opacity: 1;
+        color: var(--cor-ativa);
+    }
+
+    #navegacao a::before {
+        display: none;
+    }
+
+    .pagina-conteudo {
+        padding: 2rem 0;
+    }
+    
+    .titulo-secao {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Sobre Mim (Mobile) */
+    .sobre-mim-social {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .sobre-mim-social a {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+    
+    /* Habilidades (Mobile) */
+    .habilidades-container {
+        padding: 2rem 1.5rem;
+    }
+    .habilidade-nome,
+    .habilidade-porcentagem {
+        font-size: 1.2rem;
+    }
+    
+    /* Contato (Mobile) */
+    .grupo-formulario-botao {
+        text-align: center;
+    }
+    .botao-enviar {
+        width: 100%;
+    }
+
+    /* Rodapé (Mobile) */
+    #rodape {
+        padding: 15px 10px;
+    }
+    #rodape p {
+        font-size: 0.7rem;
+    }
+}
