@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${imagem}" alt="Imagem do projeto ${titulo}" class="modal-imagem">
                     <p class="modal-descricao">${descricao}</p>
                     <div class="modal-links">
+                        <a href="${link}" class="botao-modal" target="_blank">VISITAR SITE</a>
                         <a href="${repo}" class="botao-modal" target="_blank">VER CÓDIGO</a>
                     </div>
                 `;
